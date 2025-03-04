@@ -175,9 +175,6 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
-            # Mouse click can be used for additional interactions (if desired)
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                pass
 
         screen.fill((0, 0, 0))
 
@@ -200,13 +197,13 @@ def main():
         if count_collapsed() == DIM * DIM:
             print("All cells are collapsed!")
             running = False
+            pygame.time.delay(3000)  # Wait for 3000 milliseconds (3 seconds)
         else:
             propagate_constraints()
             collapse_lowest_entropy()
 
         clock.tick(30)  # Limit to 30 FPS
 
-    pygame.time.delay(3000)  # Wait for 3000 milliseconds (3 seconds)
     pygame.quit()
     sys.exit()
 
